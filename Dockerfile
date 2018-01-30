@@ -20,8 +20,8 @@ RUN apt-get update && \
 WORKDIR /usr/local
 RUN wget -qq http://mirror.netcologne.de/apache.org/hadoop/common/hadoop-2.7.4/hadoop-2.7.4.tar.gz && \
   tar xf hadoop-2.7.4.tar.gz  && \
-  wget -qq http://mirror.softaculous.com/apache/hive/hive-2.3.0/apache-hive-2.3.0-bin.tar.gz && \
-  tar xf apache-hive-2.3.0-bin.tar.gz
+  wget -qq http://mirror.softaculous.com/apache/hive/hive-2.3.2/apache-hive-2.3.2-bin.tar.gz && \
+  tar xf apache-hive-2.3.2-bin.tar.gz
 
 WORKDIR /usr/local/hadoop-2.7.4/etc/hadoop
 

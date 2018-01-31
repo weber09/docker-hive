@@ -39,7 +39,7 @@ ADD yarn-site.xml yarn-site.xml
 
 ENV HADOOP_HEAPSIZE=8192
 ENV HADOOP_HOME=/usr/local/hadoop-2.7.4
-ENV HIVE_HOME=/usr/local/apache-hive-2.3.0-bin
+ENV HIVE_HOME=/usr/local/apache-hive-2.3.2-bin
 ENV PATH=$HIVE_HOME:$HADOOP_HOME:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
@@ -48,13 +48,13 @@ WORKDIR /root
 RUN mkdir .ssh
 RUN cat /dev/zero | ssh-keygen -q -N "" > /dev/null && cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys
 
-ADD hive-site.xml /usr/local/apache-hive-2.3.0-bin/conf/hive-site.xml
+ADD hive-site.xml /usr/local/apache-hive-2.3.2-bin/conf/hive-site.xml
 
 # Format HFS
 RUN /usr/local/hadoop-2.7.4/bin/hdfs namenode -format -nonInteractive
 
 # Create Hive Metastore
-RUN /usr/local/apache-hive-2.3.0-bin/bin/schematool -initSchema -dbType derby
+RUN /usr/local/apache-hive-2.3.2-bin/bin/schematool -initSchema -dbType derby
 
 # Hadoop Resource Manager
 EXPOSE 8088
@@ -78,4 +78,4 @@ ENTRYPOINT service ssh start && \
   ssh-keyscan 0.0.0.0 >> /root/.ssh/known_hosts && \
   /usr/local/hadoop-2.7.4/sbin/start-yarn.sh && \
   /usr/local/hadoop-2.7.4/sbin/start-dfs.sh && \
-  /usr/local/apache-hive-2.3.0-bin/bin/hive --service hiveserver2
+  /usr/local/apache-hive-2.3.2-bin/bin/hive --service hiveserver2

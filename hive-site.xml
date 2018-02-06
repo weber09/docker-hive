@@ -1,5 +1,5 @@
 <configuration>
-  <property>
+<property>
     <name>hive.server2.enable.doAs</name>
     <value>false</value>
     <description>Needed to connect from ruby to hive server</description>
@@ -14,4 +14,8 @@
     <value>-Xmx4G -XX:+UseConcMarkSweepGC</value>
     <description>Max memory for Map Reduce Jobs</description>
   </property>
+<property>
+<name>hive.server2.authentication</name>
+<value>NOSASL</value>
+</property>
 </configuration>
